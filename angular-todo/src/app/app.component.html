@@ -1,0 +1,22 @@
+<div>
+  <h1>
+    Welcome to {{ title }}!
+  </h1>
+  <label>Name: </label><select  [(ngModel)] = 'selectedPerson'>
+    <option *ngFor='let person of people'>{{ person.name }}</option>
+  </select><br><br>
+  <label>Description: </label><input [(ngModel)]="description"><br>
+  <label>Finished?: </label><input type="checkbox" [(ngModel)]="status"><br>
+  <button (click)="addTodo()">add</button>
+  <br>
+  <label>Filter: Only undone: </label><input type="checkbox" [(ngModel)]="onlyUndone"><br>
+  <select  [(ngModel)] = 'filterPerson'>
+    <option *ngFor="let person of people" >{{ person.name }}</option>
+    <option>Nobody</option>
+  </select><br><br>
+  <ul *ngFor='let todo of todos'>
+    <li *ngIf='onlyUndone==true&&todo.done==false||onlyUndone==false'>{{ todo.description }} {{ todo.assignedTo }} Status: {{todo.done}}</li>
+  </ul>
+</div>
+
+<!--||filterPerson.name!="Nobody"&&filterPerson.name==todo.assignedTo-->
